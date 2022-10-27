@@ -17,7 +17,7 @@ const Home: FunctionComponent = () => {
   };
 
   const { data, isSuccess, isLoading } = useQuery<IMovieSearch>(
-    'movies',
+    ['movies', params.get('search')],
     fetchMovies
   );
   console.log(isLoading);
