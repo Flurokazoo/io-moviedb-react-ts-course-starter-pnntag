@@ -12,7 +12,7 @@ const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
       key={movie.imdbID}
     >
       <div className="flex-1 flex flex-col">
-        {/* <img className="h-48 mx-auto mt-4" src={movie.Poster} loading="lazy" /> */}
+        <img className="h-48 mx-auto mt-4" src={movie.Poster} loading="lazy" />
         <div className="p-4">
           <h3 className="mt-6 text-gray-900 text-sm font-medium">
             {movie.Title}
