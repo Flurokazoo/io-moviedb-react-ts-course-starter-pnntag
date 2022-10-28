@@ -24,7 +24,7 @@ const Detail: FunctionComponent = () => {
 
   return (
     <>
-      {!isLoading ? (
+      {!isLoading && data ? (
         <div className="bg-white">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
@@ -36,18 +36,18 @@ const Detail: FunctionComponent = () => {
               <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
                 <Toggle />
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                  Movie title
+                  {data.Title}
                 </h1>
                 <div className="mt-3">
-                  <p className="text-3xl text-gray-900">Year</p>
+                  <p className="text-3xl text-gray-900">{data.Year}</p>
                 </div>
                 <div className="mt-3">
-                  <p className="text-xl text-gray-900">Actors</p>
+                  <p className="text-xl text-gray-900">{data.Actors}</p>
                 </div>
                 <div className="mt-6">
                   <h3 className="sr-only">Description</h3>
                   <div className="text-base text-gray-700 space-y-6">
-                    <p>Plot</p>
+                    <p>{data.Plot}</p>
                   </div>
                 </div>
                 <div className="mt-8 flex justify-between">
