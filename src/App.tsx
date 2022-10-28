@@ -38,9 +38,9 @@ const App = () => {
           <main className="lg:col-span-9">
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/favorites" element={<Favorites />} />
-              <Route path="/detail" element={<Detail />} />
+              <Route path="/detail/:id" element={<Detail />} />
             </Routes>
           </main>
         </div>
