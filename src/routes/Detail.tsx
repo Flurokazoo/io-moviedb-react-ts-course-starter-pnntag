@@ -1,7 +1,22 @@
 import { FunctionComponent } from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import Toggle from '../components/Toggle';
+import { IMovie } from '../model/movie';
 
 const Detail: FunctionComponent = () => {
+  const { id } = useParams();
+
+  const fetchMovie = async () => {
+    const response = await fetch(
+      `https://www.omdbapi.com/?apikey=1a993ee0&i=${id}`
+    );
+
+    return response.json();
+  };
+
+  const { data, isLoading } = useQuery<IMovie>(['movie', 'todo'], fetchMovie);
+
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
