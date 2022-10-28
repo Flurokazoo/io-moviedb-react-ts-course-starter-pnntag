@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IMovie } from '../model/movie';
 
 interface IMovieCardProps {
@@ -6,8 +7,12 @@ interface IMovieCardProps {
 }
 
 const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
+  const navigate = useNavigate();
+  const handleClick = () => navigate(`/detail/${movie.imdbID}`);
+
   return (
     <li
+      onClick={handleClick}
       className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200"
       key={movie.imdbID}
     >

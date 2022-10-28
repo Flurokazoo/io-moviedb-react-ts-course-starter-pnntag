@@ -30,7 +30,10 @@ const Detail: FunctionComponent = () => {
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
               <div>
                 <div className="w-full aspect-w-1 aspect-h-1">
-                  <img className="w-full h-full object-center object-cover sm:rounded-lg" />
+                  <img
+                    className="w-full h-full object-center object-cover sm:rounded-lg"
+                    src={data.Poster}
+                  />
                 </div>
               </div>
               <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
