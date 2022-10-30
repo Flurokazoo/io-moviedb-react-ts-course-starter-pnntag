@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IMovie } from '../model/movie';
 
 interface IMovieCardProps {
@@ -24,12 +24,13 @@ const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
           <dl className="mt-1 flex-grow flex flex-col justify-between">
             <dd className="text-gray-500 text-sm">{movie.Year}</dd>
           </dl>
-          <button
+          {/* <button
             onClick={handleClick}
             className="m-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
           >
             View details
-          </button>
+          </button> */}
+          <Link to={`/detail/${movie.imdbID}`}>Go back</Link>
         </div>
       </div>
     </li>

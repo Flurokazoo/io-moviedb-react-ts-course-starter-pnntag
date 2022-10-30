@@ -63,7 +63,13 @@ const Detail: FunctionComponent = () => {
                   </div>
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <button onClick={() => navigate(-1)}>Go back</button>
+                  <button
+                    onClick={() => {
+                      navigate(-1);
+                    }}
+                  >
+                    Go Back
+                  </button>
                 </div>
               </div>
             </div>
