@@ -5,11 +5,10 @@ import Detail from './routes/Detail';
 import Edit from './routes/Edit';
 import Favorites from './routes/Favorites';
 import Home from './routes/Home';
-import { FavoritesContext } from './context/FavoritesContext';
+import { FavoritesContext, FavoritesProvider } from './context/FavoritesContext';
 import { useState } from 'react';
 
 const App = () => {
-  const [favorites, setFavorites] = useState([]);
 
   return (
     <div className="min-h-full">
@@ -42,11 +41,11 @@ const App = () => {
           <main className="lg:col-span-9">
             <Routes>
               <Route path="/home" element={<Home />} />
-              <FavoritesContext.Provider value={favorites}>
+              <FavoritesProvider>
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/detail/:id" element={<Detail />} />
-              </FavoritesContext.Provider>
+              </FavoritesProvider>
             </Routes>
           </main>
         </div>
