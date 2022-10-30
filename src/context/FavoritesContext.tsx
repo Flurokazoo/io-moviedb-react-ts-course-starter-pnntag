@@ -3,9 +3,10 @@ import React, { useState, useContext, PropsWithChildren } from 'react';
 
 interface FavoritesContextProps {
   favorites: IMovie[];
-  addFavoritesEntry: (id: number) => void;
-  removeFavoritesEntry: (id: number) => void;
+  addFavoritesEntry: (id: string) => void;
+  removeFavoritesEntry: (id: string) => void;
   updateFavoritesEntry: (movie: IMovie) => void;
+  isFavorite: (id: string) => boolean;
 }
 export const FavoritesContext = React.createContext<FavoritesContextProps>(
   {} as FavoritesContextProps
@@ -14,11 +15,15 @@ export const FavoritesContext = React.createContext<FavoritesContextProps>(
 export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
   const [favorites, setFavorites] = useState<IMovie[]>([]);
 
-  const addFavoritesEntry = (id: number) => {};
+  const addFavoritesEntry = (id: string) => {};
 
-  const removeFavoritesEntry = (id: number) => {};
+  const removeFavoritesEntry = (id: string) => {};
 
   const updateFavoritesEntry = (movie: IMovie) => {};
+
+  const isFavorite = (id: string) => favorites.find((favorite) => favorite.imdbID === id ? true : false )
+   
+  };
 
   return (
     <FavoritesContext.Provider
@@ -27,6 +32,7 @@ export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
         addFavoritesEntry,
         removeFavoritesEntry,
         updateFavoritesEntry,
+        isFavorite,
       }}
       {...children}
     />
