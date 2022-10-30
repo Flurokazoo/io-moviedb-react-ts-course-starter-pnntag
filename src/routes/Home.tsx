@@ -3,6 +3,7 @@ import MovieCard from '../components/MovieCard';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { IMovieSearch } from '../model/movie';
+import Spinner from '../components/Spinner';
 
 const Home: FunctionComponent = () => {
   const [params] = useSearchParams();
@@ -34,10 +35,10 @@ const Home: FunctionComponent = () => {
             ))}
           </ul>
         ) : (
-          <h1>Something went terribly wrong!</h1>
+          <h1>No movies with the search term could be found!</h1>
         )
       ) : (
-        <h1>...Loading</h1>
+        <Spinner />
       )}
     </>
   );
