@@ -9,7 +9,9 @@ const Home: FunctionComponent = () => {
   const [params] = useSearchParams();
 
   const fetchMovies = async () => {
-    const searchQuery = params.get('search');
+    const searchQuery = params.get('search')
+      ? params.get('search')
+      : 'bassie & adriaan';
     const response = await fetch(
       `https://www.omdbapi.com/?apikey=1a993ee0&s=${searchQuery}`
     );
@@ -17,9 +19,14 @@ const Home: FunctionComponent = () => {
     return response.json();
   };
 
+  console.log(!!params.get('search'));
+
   const { data, isSuccess, isLoading } = useQuery<IMovieSearch>(
     ['movies', params.get('search')],
-    fetchMovies
+    fetchMovies,
+    {
+      enabled: !!params.get('search'),
+    }
   );
 
   return (

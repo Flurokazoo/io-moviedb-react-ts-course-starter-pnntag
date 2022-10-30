@@ -63,7 +63,7 @@ const Detail: FunctionComponent = () => {
                   </div>
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Link to="home">Go Back</Link>
+                  <Link to="/home">Go Back</Link>
                 </div>
               </div>
             </div>
