@@ -7,6 +7,7 @@ interface FavoritesContextProps {
   deleteFavoritesEntry: (id: string) => void;
   updateFavoritesEntry: (movie: IMovie) => void;
   isFavorite: (id: string) => boolean;
+  toggleFavoritesEntry: (movie: IMovie) => void;
 }
 export const FavoritesContext = React.createContext<FavoritesContextProps>(
   {} as FavoritesContextProps
@@ -31,6 +32,11 @@ export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
   const isFavorite = (id: string) =>
     favorites.find((favorite) => favorite.imdbID === id) ? true : false;
 
+  const toggleFavoritesEntry = (movie: IMovie) =>
+    isFavorite(movie.imdbID)
+      ? deleteFavoritesEntry(movie.imdbID)
+      : addFavoritesEntry(movie);
+
   return (
     <FavoritesContext.Provider
       value={{
@@ -39,6 +45,7 @@ export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
         deleteFavoritesEntry,
         updateFavoritesEntry,
         isFavorite,
+        toggleFavoritesEntry,
       }}
       {...children}
     />

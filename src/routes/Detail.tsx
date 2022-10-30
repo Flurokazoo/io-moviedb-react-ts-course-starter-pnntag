@@ -1,12 +1,14 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import Toggle from '../components/Toggle';
 import { IMovie } from '../model/movie';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 const Detail: FunctionComponent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { isFavorite, toggleFavoritesEntry } = useContext(FavoritesContext);
 
   const fetchMovie = async () => {
     const response = await fetch(
@@ -21,6 +23,8 @@ const Detail: FunctionComponent = () => {
   if (data?.Response === 'False') {
     navigate('/home');
   }
+
+  const handleToggle = () => (data ? toggleFavoritesEntry(data) : null);
 
   return (
     <>
@@ -43,7 +47,10 @@ const Detail: FunctionComponent = () => {
                 </div>
               </div>
               <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-                <Toggle />
+                <Toggle
+                  enabled={isFavorite(data.imdbID)}
+                  onToggle={handleToggle}
+                />
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
                   {data.Title}
                 </h1>
