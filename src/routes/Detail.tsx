@@ -27,6 +27,12 @@ const Detail: FunctionComponent = () => {
       {!isLoading && data ? (
         <div className="bg-white">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div>
+              <button className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white my-2 py-2 px-4 border border-gray-500 hover:border-transparent rounded">
+                Back
+              </button>
+            </div>
+
             <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
               <div>
                 <div className="w-full aspect-w-1 aspect-h-1">

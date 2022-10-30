@@ -1,5 +1,6 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FavoritesContext } from '../context/FavoritesContext';
 import { IMovie } from '../model/movie';
 
 interface IFavoritesCardProps {
@@ -8,11 +9,13 @@ interface IFavoritesCardProps {
 
 const FavoritesCard: FunctionComponent<IFavoritesCardProps> = ({ movie }) => {
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/edit/${movie.imdbID}`);
+  const { deleteFavoritesEntry } = useContext(FavoritesContext);
+
+  const handleEditClick = () => navigate(`/edit/${movie.imdbID}`);
+  const handleDeleteClick = () => deleteFavoritesEntry(movie.imdbID);
 
   return (
     <li
-      onClick={handleClick}
       className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200"
       key={movie.imdbID}
     >
@@ -25,10 +28,16 @@ const FavoritesCard: FunctionComponent<IFavoritesCardProps> = ({ movie }) => {
           <dl className="mt-1 flex-grow flex flex-col justify-between">
             <dd className="text-gray-500 text-sm">{movie.Year}</dd>
           </dl>
-          <button className="m-2 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={handleEditClick}
+            className="m-2 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+          >
             Edit
           </button>
-          <button className="m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={handleDeleteClick}
+            className="m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
             Delete
           </button>
         </div>
@@ -37,4 +46,4 @@ const FavoritesCard: FunctionComponent<IFavoritesCardProps> = ({ movie }) => {
   );
 };
 
-export default MovieCard;
+export default FavoritesCard;
