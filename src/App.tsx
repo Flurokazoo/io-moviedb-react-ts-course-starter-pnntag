@@ -42,11 +42,11 @@ const App = () => {
           <main className="lg:col-span-9">
             <Routes>
               <Route path="/home" element={<Home />} />
-              <FavoritesContext.Provider>
+              <FavoritesContext.Provider value={favorites}>
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/detail/:id" element={<Detail />} />
-              </FavoritesContext>
+              </FavoritesContext.Provider>
             </Routes>
           </main>
         </div>
