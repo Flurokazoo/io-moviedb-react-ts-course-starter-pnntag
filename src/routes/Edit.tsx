@@ -1,6 +1,25 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext, useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FavoritesContext } from '../context/FavoritesContext';
+import { IMovie } from '../model/movie';
+
+interface EditRouteParams {
+  id: string;
+}
 
 const Edit: FunctionComponent = () => {
+  const { register, handleSubmit, reset } = useForm<IMovie>();
+  const { findFavorite } = useContext(FavoritesContext);
+  const navigate = useNavigate();
+  const { id } = useParams<keyof EditRouteParams>() as EditRouteParams;
+  const onSubmit: SubmitHandler<IMovie> = (data) => {};
+
+  const movie = findFavorite(id);
+
+  if (!movie) navigate('/home');
+  useEffect(() => reset(movie), [movie, reset]);
+
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -18,6 +37,7 @@ const Edit: FunctionComponent = () => {
                 </label>
                 <div className="mt-1">
                   <input
+                    {...register('Title')}
                     name="Title"
                     type="text"
                     className="shadow-sm p-2 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -31,6 +51,7 @@ const Edit: FunctionComponent = () => {
                 </label>
                 <div className="mt-1">
                   <input
+                    {...register('Year')}
                     name="Year"
                     type="text"
                     className="shadow-sm p-2 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -44,6 +65,7 @@ const Edit: FunctionComponent = () => {
                 </label>
                 <div className="mt-1">
                   <input
+                    {...register('Actors')}
                     name="Actors"
                     type="text"
                     className="shadow-sm p-2 block w-full sm:text-sm border-gray-300 rounded-md"
