@@ -8,7 +8,8 @@ import { FavoritesContext } from '../context/FavoritesContext';
 const Detail: FunctionComponent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { isFavorite, toggleFavoritesEntry } = useContext(FavoritesContext);
+  const { isFavorite, toggleFavoritesEntry, favorites } =
+    useContext(FavoritesContext);
 
   const fetchMovie = async () => {
     const response = await fetch(
@@ -25,7 +26,7 @@ const Detail: FunctionComponent = () => {
   }
 
   const handleToggle = () => (data ? toggleFavoritesEntry(data) : null);
-
+  console.log(favorites);
   return (
     <>
       {!isLoading && data ? (

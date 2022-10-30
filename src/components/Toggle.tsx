@@ -1,14 +1,11 @@
 import clsx from 'clsx';
-import { FunctionComponent, useContext } from 'react';
-import { FavoritesContext } from '../context/FavoritesContext';
+import { FunctionComponent } from 'react';
 
 interface IToggleProps {
   enabled: boolean;
   onToggle: () => void;
 }
 const Toggle: FunctionComponent<IToggleProps> = ({ enabled, onToggle }) => {
-  const { isFavorite } = useContext(FavoritesContext);
-
   return (
     <div className="flex flex-row-reverse">
       <button
@@ -24,7 +21,11 @@ const Toggle: FunctionComponent<IToggleProps> = ({ enabled, onToggle }) => {
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          className={clsx(
+            'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
+            { 'translate-x-5': enabled },
+            { 'translate-x-0': !enabled }
+          )}
         ></span>
       </button>
       <b>Favorite: </b>
