@@ -5,11 +5,13 @@ import Detail from './routes/Detail';
 import Edit from './routes/Edit';
 import Favorites from './routes/Favorites';
 import Home from './routes/Home';
-import { FavoritesContext, FavoritesProvider } from './context/FavoritesContext';
+import {
+  FavoritesContext,
+  FavoritesProvider,
+} from './context/FavoritesContext';
 import { useState } from 'react';
 
 const App = () => {
-
   return (
     <div className="min-h-full">
       <header className="bg-white shadow-sm lg:static lg:overflow-y-visible">
@@ -55,6 +57,3 @@ const App = () => {
 };
 
 export default App;
-
-FavoritesContext: IntrinsicAttributes&ProviderProps<{}>;
-FavoritesContext: IntrinsicAttributes&ProviderProps<{}>;
