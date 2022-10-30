@@ -1,5 +1,5 @@
 import { IMovie } from '../model/movie';
-import React, { useState, useContext, PropsWithChildren } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 
 interface FavoritesContextProps {
   favorites: IMovie[];

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IMovie } from '../model/movie';
 
 interface IMovieCardProps {

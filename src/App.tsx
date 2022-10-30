@@ -1,15 +1,10 @@
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import MovieCard from './components/MovieCard';
 import Search from './components/Search';
 import Detail from './routes/Detail';
 import Edit from './routes/Edit';
 import Favorites from './routes/Favorites';
 import Home from './routes/Home';
-import {
-  FavoritesContext,
-  FavoritesProvider,
-} from './context/FavoritesContext';
-import Navigation from './components/Navigation';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 const App = () => {
   return (
