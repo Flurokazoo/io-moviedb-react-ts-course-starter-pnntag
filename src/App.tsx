@@ -5,8 +5,12 @@ import Detail from './routes/Detail';
 import Edit from './routes/Edit';
 import Favorites from './routes/Favorites';
 import Home from './routes/Home';
+import { FavoritesContext } from './context/FavoritesContext';
+import { useState } from 'react';
 
 const App = () => {
+  const [favorites, setFavorites] = useState([]);
+
   return (
     <div className="min-h-full">
       <header className="bg-white shadow-sm lg:static lg:overflow-y-visible">
@@ -38,9 +42,11 @@ const App = () => {
           <main className="lg:col-span-9">
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route path="/edit/:id" element={<Edit />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/detail/:id" element={<Detail />} />
+              <FavoritesContext.Provider>
+                <Route path="/edit/:id" element={<Edit />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/detail/:id" element={<Detail />} />
+              </FavoritesContext>
             </Routes>
           </main>
         </div>
@@ -50,3 +56,6 @@ const App = () => {
 };
 
 export default App;
+
+FavoritesContext: IntrinsicAttributes&ProviderProps<{}>;
+FavoritesContext: IntrinsicAttributes&ProviderProps<{}>;
