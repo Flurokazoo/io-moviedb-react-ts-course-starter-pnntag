@@ -11,17 +11,18 @@ interface EditRouteParams {
 const Edit: FunctionComponent = () => {
   const { register, handleSubmit, reset } = useForm<IMovie>();
   const { findFavorite, updateFavoritesEntry } = useContext(FavoritesContext);
-  const navigate = useNavigate();
   const { id } = useParams<keyof EditRouteParams>() as EditRouteParams;
-  const onSubmit: SubmitHandler<IMovie> = (data, event) => {
-    event?.preventDefault();
-    updateFavoritesEntry(data);
-  };
-
+  const navigate = useNavigate();
   const movie = findFavorite(id);
 
   if (!movie) navigate('/home');
   useEffect(() => reset(movie), [movie, reset]);
+
+  const onSubmit: SubmitHandler<IMovie> = (data, event) => {
+    event?.preventDefault();
+    updateFavoritesEntry(data);
+    navigate('/favorites');
+  };
 
   return (
     <div className="bg-white">
@@ -29,7 +30,10 @@ const Edit: FunctionComponent = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
           <div>
             <div className="w-full aspect-w-1 aspect-h-1">
-              <img className="w-full h-full object-center object-cover sm:rounded-lg" />
+              <img
+                className="w-full h-full object-center object-cover sm:rounded-lg"
+                src={movie?.Poster}
+              />
             </div>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>

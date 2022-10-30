@@ -9,8 +9,7 @@ import Spinner from '../components/Spinner';
 const Detail: FunctionComponent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { isFavorite, toggleFavoritesEntry, favorites } =
-    useContext(FavoritesContext);
+  const { findFavorite, toggleFavoritesEntry } = useContext(FavoritesContext);
 
   const fetchMovie = async () => {
     const response = await fetch(
@@ -27,7 +26,7 @@ const Detail: FunctionComponent = () => {
   }
 
   const handleToggle = () => (data ? toggleFavoritesEntry(data) : null);
-  console.log(favorites);
+
   return (
     <>
       {!isLoading && data ? (
@@ -44,7 +43,7 @@ const Detail: FunctionComponent = () => {
               </div>
               <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
                 <Toggle
-                  enabled={isFavorite(data.imdbID)}
+                  enabled={findFavorite(data.imdbID) ? true : false}
                   onToggle={handleToggle}
                 />
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">

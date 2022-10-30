@@ -6,7 +6,6 @@ interface FavoritesContextProps {
   addFavoritesEntry: (movie: IMovie) => void;
   deleteFavoritesEntry: (id: string) => void;
   updateFavoritesEntry: (movie: IMovie) => void;
-  isFavorite: (id: string) => boolean;
   toggleFavoritesEntry: (movie: IMovie) => void;
   findFavorite: (id: string) => IMovie | undefined;
 }
@@ -30,14 +29,11 @@ export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
       )
     );
 
-  const isFavorite = (id: string) =>
-    favorites.find((favorite) => favorite.imdbID === id) ? true : false;
-
   const findFavorite = (id: string) =>
     favorites.find((favorite) => favorite.imdbID === id);
 
   const toggleFavoritesEntry = (movie: IMovie) =>
-    isFavorite(movie.imdbID)
+    findFavorite(movie.imdbID)
       ? deleteFavoritesEntry(movie.imdbID)
       : addFavoritesEntry(movie);
 
@@ -48,7 +44,6 @@ export const FavoritesProvider = (children: PropsWithChildren<{}>) => {
         addFavoritesEntry,
         deleteFavoritesEntry,
         updateFavoritesEntry,
-        isFavorite,
         toggleFavoritesEntry,
         findFavorite,
       }}

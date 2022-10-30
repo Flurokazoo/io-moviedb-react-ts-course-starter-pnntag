@@ -4,7 +4,6 @@ import { FavoritesContext } from '../context/FavoritesContext';
 
 const Favorites: FunctionComponent = () => {
   const { favorites } = useContext(FavoritesContext);
-  console.log(favorites);
   return (
     <ul
       role="list"

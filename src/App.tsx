@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import MovieCard from './components/MovieCard';
 import Search from './components/Search';
 import Detail from './routes/Detail';
@@ -20,7 +20,7 @@ const App = () => {
             <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
               <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                 <div className="flex-shrink-0 flex items-center">
-                  <Link to="/favorites">MovieDB</Link>
+                  <Link to="/home">MovieDB</Link>
                 </div>
               </div>
               <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
@@ -57,6 +57,7 @@ const App = () => {
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/detail/:id" element={<Detail />} />
+                <Route path="*" element={<Navigate to="/home" replace />} />
               </Routes>
             </main>
           </div>
