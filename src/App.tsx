@@ -20,7 +20,7 @@ const App = () => {
             <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
               <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                 <div className="flex-shrink-0 flex items-center">
-                  <a href="/favorites">MovieDB</a>
+                  <Link to="/favorites">MovieDB</Link>
                 </div>
               </div>
               <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
@@ -34,12 +34,20 @@ const App = () => {
         <div className="py-10">
           <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="lg:block lg:col-span-3 xl:col-span-2">
-              <nav aria-label="Sidebar" className="sticky top-4 divide-y">
+              <nav
+                aria-label="Sidebar"
+                className="sticky top-4 divide-y divide-gray-300"
+              >
                 <div className="pb-8 space-y-1">
-                  <Link to="/home">Home</Link>
-                </div>
-                <div className="pb-8 space-y-1">
-                  <Link to="/favorites">Favorites</Link>{' '}
+                  <Link to="/home" className="flex bg-gray-100 rounded p-4">
+                    Home
+                  </Link>
+                  <Link
+                    to="/favorites"
+                    className="flex bg-gray-100 rounded p-4"
+                  >
+                    Favorites
+                  </Link>
                 </div>
               </nav>
             </div>
