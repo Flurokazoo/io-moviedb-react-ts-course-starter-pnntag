@@ -41,14 +41,14 @@ const App = () => {
             </nav>
           </div>
           <main className="lg:col-span-9">
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <FavoritesProvider>
+            <FavoritesProvider>
+              <Routes>
+                <Route path="/home" element={<Home />} />
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/detail/:id" element={<Detail />} />
-              </FavoritesProvider>
-            </Routes>
+              </Routes>
+            </FavoritesProvider>
           </main>
         </div>
       </div>

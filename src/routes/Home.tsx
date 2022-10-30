@@ -20,9 +20,7 @@ const Home: FunctionComponent = () => {
     ['movies', params.get('search')],
     fetchMovies
   );
-  console.log(isLoading);
 
-  console.log(data);
   return (
     <>
       {!isLoading ? (
@@ -32,7 +30,6 @@ const Home: FunctionComponent = () => {
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           >
             {data.Search.map((movie) => (
-              // console.log(movie)
               <MovieCard movie={movie} />
             ))}
           </ul>

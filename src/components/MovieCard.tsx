@@ -12,7 +12,6 @@ const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
 
   return (
     <li
-      onClick={handleClick}
       className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200"
       key={movie.imdbID}
     >
@@ -25,6 +24,12 @@ const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
           <dl className="mt-1 flex-grow flex flex-col justify-between">
             <dd className="text-gray-500 text-sm">{movie.Year}</dd>
           </dl>
+          <button
+            onClick={handleClick}
+            className="m-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            View details
+          </button>
         </div>
       </div>
     </li>
