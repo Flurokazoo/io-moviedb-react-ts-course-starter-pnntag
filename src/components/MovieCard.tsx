@@ -7,14 +7,8 @@ interface IMovieCardProps {
 }
 
 const MovieCard: FunctionComponent<IMovieCardProps> = ({ movie }) => {
-  const navigate = useNavigate();
-  const handleClick = () => navigate(`/detail/${movie.imdbID}`);
-
   return (
-    <li
-      className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200"
-      key={movie.imdbID}
-    >
+    <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
       <div className="flex-1 flex flex-col">
         <img className="h-48 mx-auto mt-4" src={movie.Poster} loading="lazy" />
         <div className="p-4">

@@ -35,7 +35,7 @@ const Home: FunctionComponent = () => {
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           >
             {data.Search.map((movie: IMovie) => (
-              <MovieCard movie={movie} />
+              <MovieCard key={movie.imdbID} movie={movie} />
             ))}
           </ul>
         )
