@@ -10,6 +10,7 @@ interface IFavoritesCardProps {
 const FavoritesCard: FunctionComponent<IFavoritesCardProps> = ({ movie }) => {
   const navigate = useNavigate();
   const { deleteFavoritesEntry } = useContext(FavoritesContext);
+
   const handleEditClick = () => navigate(`/edit/${movie.imdbID}`);
   const handleDeleteClick = () => deleteFavoritesEntry(movie.imdbID);
 

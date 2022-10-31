@@ -5,6 +5,7 @@ import Edit from './routes/Edit';
 import Favorites from './routes/Favorites';
 import Home from './routes/Home';
 import { FavoritesProvider } from './context/FavoritesContext';
+import Navigation from './components/Navigation';
 
 const App = () => {
   return (
@@ -34,15 +35,7 @@ const App = () => {
                 className="sticky top-4 divide-y divide-gray-300"
               >
                 <div className="pb-8 space-y-1">
-                  <Link to="/home" className="flex bg-gray-100 rounded p-4">
-                    Home
-                  </Link>
-                  <Link
-                    to="/favorites"
-                    className="flex bg-gray-100 rounded p-4"
-                  >
-                    Favorites
-                  </Link>
+                  <Navigation />
                 </div>
               </nav>
             </div>
